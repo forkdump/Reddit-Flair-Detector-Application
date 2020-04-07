@@ -55,8 +55,6 @@ from django.shortcuts import render
 import os
 import pickle
 from sklearn.externals import joblib
-
-import whois
 import datetime
 
 
@@ -64,7 +62,12 @@ def result(request):
 
         text=request.GET['url']
         try:
+            uq=text[43:45]+".txt"
+            imgname=text[43:45]+".png"
+            location="static/"+imgname
+            loc="/static/"+imgname
             import praw
+            import re
             nm=text  #"https://www.reddit.com/r/india/comments/fwcz7h/firozabad_police_factchecking_zee_news/"
             reddit = praw.Reddit(client_id='WBTxS7rybznf7Q', client_secret='vJUTUflXITBsQMxeviOfG8mCZoA', user_agent='projectreddit', username='Mysterious_abhE', password='Saxena0705')
             submission = reddit.submission(url=nm)
@@ -79,6 +82,44 @@ def result(request):
 
 
             tr=submission.title+nm+c
+
+            processed_tweet = re.sub(r'\W', ' ', tr)
+
+
+            # Remove all the special characters
+
+            processed_tweet = re.sub(r'http\S+', ' ', processed_tweet)
+
+            #processed_tweet = re.sub(r'https?:\/\/+', ' ', processed_tweet)
+
+            #processed_tweet=re.sub(r'\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*', ' ',processed_tweet)
+
+            processed_tweet=re.sub(r'www\S+', ' ', processed_tweet)
+
+            processed_tweet=re.sub(r'co \S+', ' ', processed_tweet)
+            # remove all single characters
+            processed_tweet = re.sub(r'\s+[a-zA-Z]\s+', ' ', processed_tweet)
+
+            # Remove single characters from the start
+            processed_tweet = re.sub(r'\^[a-zA-Z]\s+', ' ', processed_tweet) 
+
+            # Substituting multiple spaces with single space
+            processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+
+            # Removing prefixed 'b'
+            processed_tweet = re.sub(r'^b\s+', ' ', processed_tweet)
+
+            processed_tweet = re.sub(r'\d','',processed_tweet)
+            processed_tweet = re.sub(r'\_',' ',processed_tweet)
+
+            processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+
+
+            # Converting to Lowercase
+            tr = processed_tweet.lower()
+            
+
+
             import datetime
             import joblib
 
