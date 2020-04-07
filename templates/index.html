@@ -13,8 +13,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.10.1/css/mdb.min.css" rel="stylesheet">
-  <link rel="icon" href="{%static '46-512.png' %}" type="image/png">
-  <title>{% block title %}Malicious Url Detector{% endblock %}</title>
+  <link rel="icon" href="{%static '46.png' %}" type="image/png">
+  <title>{% block title %}Reddit Realtime Analysis{% endblock %}</title>
 
 </head>
 
@@ -55,7 +55,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'geturlhistory' %}">Our Database</a>
+          <a class="nav-link" href="{% url 'geturlhistory' %}">Database</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'getuserfeedbackform' %}">User FeedBack</a>
@@ -64,10 +64,10 @@
           <a class="nav-link" href="{% url 'discuss' %}">Discuss Channel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'getdataset' %}">Download Our Dataset</a>
+          <a class="nav-link" href="{% url 'getdataset' %}">Download Dataset</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">About Our App</a>
+          <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
         
       </ul>
