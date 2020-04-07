@@ -11,7 +11,7 @@ class UserFeedBack(models.Model):
 
 class Url(models.Model):
     created_at = models.DateTimeField(primary_key=True,auto_now_add=True)
-    
+    title= models.CharField(max_length=1000,null=True,default="Not Found")
     link = models.CharField(max_length=1000,null=True,default="Not Found")
     result = models.CharField(max_length=100,null=True,default="Not Found")
     flair = models.CharField(max_length=1000,null=True,default="Not Found")

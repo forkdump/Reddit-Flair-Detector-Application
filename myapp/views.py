@@ -137,10 +137,17 @@ def result(request):
             obj.result = arg[0]
             obj.link = text
             obj.flair = arg[0]
+            obj.title=submission.title
             tags = [result,link,flair]
             tags = list(filter(lambda x: x!="Not Found",tags))
             tags.append(text)
             obj.save()
+
+            import csv
+            with open ('static/dataset.csv','a') as res:        
+                writer=csv.writer(res)           
+                s="{},{},{},{}\n".format(re.sub(r'\W', '', text),re.sub(r'\W', '', submission.title),arg[0],str(datetime.datetime.now()))
+                res.write(s)     
 
                 
             return render(request,'result.html',{'result':'Real-time analysis successfull','f2':text,'mal': arg[0]})
