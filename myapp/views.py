@@ -169,14 +169,13 @@ def about(request):
         return render(request, 'about.html')
     
 def geturlhistory(request):
-    try:
-        mydict = {
-            "urls" : Url.objects.all().order_by('-created_at')
-        }
-        return render(request,'list.html',context=mydict)
-    except:
+    mydict = {
+        "urls" : Url.objects.all().order_by('-created_at')
+    }
+    return render(request,'list.html',context=mydict)
+    '''except:
         return render(request,'404.html')
-
+'''
 def discuss(request):
     try:
         mydict = {
