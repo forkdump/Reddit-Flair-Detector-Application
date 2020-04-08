@@ -5,6 +5,7 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('getuserfeedbackform',views.getuserfeedbackform,name="getuserfeedbackform"),
     path('saveuserfeedbackform',views.saveuserfeedbackform,name="saveuserfeedbackform"),
+    path('dataanalysis',views.dataanalysis,name="dataanalysis"),
     path('api',views.api,name='api'),
     path('search',views.search,name="search"),
     path('result',views.result,name='result'),

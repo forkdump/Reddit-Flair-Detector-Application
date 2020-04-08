@@ -27,6 +27,8 @@ def getuserfeedbackform(request):
     except:
         return render(request, '404.html')
 
+def dataanalysis(request):
+    return render(request,'dataanalysis.html')
 
 def saveuserfeedbackform(request):
     try:

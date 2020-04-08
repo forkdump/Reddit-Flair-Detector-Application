@@ -18,7 +18,9 @@
 
 </head>
 
-<body style="background-image: url(https://wallpapersite.com/images/pages/pic_h/17944.jpg)">
+<body style="background-image: url(https://wallpapersite.com/images/pages/pic_h/17944.jpg);background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;">
   <!--Navbar-->
   <div class="card" id="card" style="
     background-color: black;
@@ -56,6 +58,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'geturlhistory' %}">Database</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'dataanalysis' %}">Data Analysis</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'getuserfeedbackform' %}">User FeedBack</a>
