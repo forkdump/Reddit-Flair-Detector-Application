@@ -241,14 +241,14 @@ def search(request):
         query = str(query).lower()
         mydict = {
             "urls" : Url.objects.all().filter(Q(link__contains=query) | Q(result__contains=query) | Q(created_at__contains=query) |
-            Q(rank__contains=query) | Q(dom__contains=query)  | Q(country__contains=query) | Q(state__contains=query) | Q(emails__contains=query) |
-            Q(add__contains=query) | Q(org__contains=query) | Q(city__contains=query)
+            Q(flair__contains=query) | Q(title__contains=query) 
             ).order_by('-created_at')
         }
         return render(request,'list.html',context=mydict)
     except:
         return render(request,'404.html')
-
+        
+    
 def replyform(request,replyid):
     try:
         obj = UserFeedBack.objects.get(userid=replyid)
