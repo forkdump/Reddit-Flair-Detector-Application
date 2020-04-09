@@ -209,6 +209,12 @@ def api(request):
             response = JsonResponse(mydict)
             return response
             
+def themes(request):
+    #return HttpResponse("about")
+    try:
+        return render(request, 'themes.html')
+    except:
+        return render(request, 'themes.html')
         
 
 def about(request):
