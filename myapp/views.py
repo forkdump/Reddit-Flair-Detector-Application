@@ -62,103 +62,103 @@ import datetime
 def result(request):
 
         text=request.GET['url']
-        try:
-            uq=text[43:45]+".txt"
-            imgname=text[43:45]+".png"
-            location="static/"+imgname
-            loc="/static/"+imgname
-            import praw
-            import re
-            nm=text  #"https://www.reddit.com/r/india/comments/fwcz7h/firozabad_police_factchecking_zee_news/"
-            reddit = praw.Reddit(client_id='WBTxS7rybznf7Q', client_secret='vJUTUflXITBsQMxeviOfG8mCZoA', user_agent='projectreddit', username='Mysterious_abhE', password='Saxena0705')
-            submission = reddit.submission(url=nm)
-            #print (submission.comments[0])
-            #print (submission.title)
-            submission.comments.replace_more(limit=0)
-            #co=[]
-            tr=[]
-            c=''
-            for top_level_comment in submission.comments:        
-                c+=top_level_comment.body  
+        #try:
+        uq=text[43:45]+".txt"
+        imgname=text[43:45]+".png"
+        location="static/"+imgname
+        loc="/static/"+imgname
+        import praw
+        import re
+        nm=text  #"https://www.reddit.com/r/india/comments/fwcz7h/firozabad_police_factchecking_zee_news/"
+        reddit = praw.Reddit(client_id='WBTxS7rybznf7Q', client_secret='vJUTUflXITBsQMxeviOfG8mCZoA', user_agent='projectreddit', username='Mysterious_abhE', password='Saxena0705')
+        submission = reddit.submission(url=nm)
+        #print (submission.comments[0])
+        #print (submission.title)
+        submission.comments.replace_more(limit=0)
+        #co=[]
+        tr=[]
+        c=''
+        for top_level_comment in submission.comments:        
+            c+=top_level_comment.body  
 
 
-            tr=submission.title+nm+c
+        tr=submission.title+nm+c
 
-            processed_tweet = re.sub(r'\W', ' ', tr)
-
-
-            # Remove all the special characters
-
-            processed_tweet = re.sub(r'http\S+', ' ', processed_tweet)
-
-            #processed_tweet = re.sub(r'https?:\/\/+', ' ', processed_tweet)
-
-            #processed_tweet=re.sub(r'\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*', ' ',processed_tweet)
-
-            processed_tweet=re.sub(r'www\S+', ' ', processed_tweet)
-
-            processed_tweet=re.sub(r'co \S+', ' ', processed_tweet)
-            # remove all single characters
-            processed_tweet = re.sub(r'\s+[a-zA-Z]\s+', ' ', processed_tweet)
-
-            # Remove single characters from the start
-            processed_tweet = re.sub(r'\^[a-zA-Z]\s+', ' ', processed_tweet) 
-
-            # Substituting multiple spaces with single space
-            processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
-
-            # Removing prefixed 'b'
-            processed_tweet = re.sub(r'^b\s+', ' ', processed_tweet)
-
-            processed_tweet = re.sub(r'\d','',processed_tweet)
-            processed_tweet = re.sub(r'\_',' ',processed_tweet)
-
-            processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+        processed_tweet = re.sub(r'\W', ' ', tr)
 
 
-            # Converting to Lowercase
-            tr = processed_tweet.lower()
+        # Remove all the special characters
+
+        processed_tweet = re.sub(r'http\S+', ' ', processed_tweet)
+
+        #processed_tweet = re.sub(r'https?:\/\/+', ' ', processed_tweet)
+
+        #processed_tweet=re.sub(r'\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*', ' ',processed_tweet)
+
+        processed_tweet=re.sub(r'www\S+', ' ', processed_tweet)
+
+        processed_tweet=re.sub(r'co \S+', ' ', processed_tweet)
+        # remove all single characters
+        processed_tweet = re.sub(r'\s+[a-zA-Z]\s+', ' ', processed_tweet)
+
+        # Remove single characters from the start
+        processed_tweet = re.sub(r'\^[a-zA-Z]\s+', ' ', processed_tweet) 
+
+        # Substituting multiple spaces with single space
+        processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+
+        # Removing prefixed 'b'
+        processed_tweet = re.sub(r'^b\s+', ' ', processed_tweet)
+
+        processed_tweet = re.sub(r'\d','',processed_tweet)
+        processed_tweet = re.sub(r'\_',' ',processed_tweet)
+
+        processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+
+
+        # Converting to Lowercase
+        tr = processed_tweet.lower()
+        
+    
+
+        import datetime
+        import joblib
+
+        filename = 'SGD_model0.02v2cleaned.sav'
+
+        loaded_model = joblib.load(filename)
+
+        arg=loaded_model.predict(([tr]))
+        print (arg[0])
+        
+
+        link=text
+        flair=arg[0]
+        obj = Url()
+        obj.result = arg[0]
+        obj.link = text
+        obj.flair = arg[0]
+        obj.title=submission.title
+        tags = [result,link,flair]
+        tags = list(filter(lambda x: x!="Not Found",tags))
+        tags.append(text)
+        obj.save()
+
+        import csv
+        with open ('static/dataset.csv','a') as res:        
+            writer=csv.writer(res)           
+            s="{},{},{},{}\n".format(re.sub(r'\W', '', text),re.sub(r'\W', '', submission.title),arg[0],str(datetime.datetime.now()))
+            res.write(s)     
+
             
-
-
-            import datetime
-            import joblib
-
-            filename = 'SGD_model0.02v2cleaned.sav'
-
-            loaded_model = joblib.load(filename)
-
-            arg=loaded_model.predict(([tr]))
-            print (arg[0])
-            
-
-            link=text
-            flair=arg[0]
-            obj = Url()
-            obj.result = arg[0]
-            obj.link = text
-            obj.flair = arg[0]
-            obj.title=submission.title
-            tags = [result,link,flair]
-            tags = list(filter(lambda x: x!="Not Found",tags))
-            tags.append(text)
-            obj.save()
-
-            import csv
-            with open ('static/dataset.csv','a') as res:        
-                writer=csv.writer(res)           
-                s="{},{},{},{}\n".format(re.sub(r'\W', '', text),re.sub(r'\W', '', submission.title),arg[0],str(datetime.datetime.now()))
-                res.write(s)     
-
-                
-            return render(request,'result.html',{'result':'Real-time analysis successfull','f2':text,'mal': arg[0]})
+        return render(request,'result.html',{'result':'Real-time analysis successfull','f2':text,'mal': arg[0],'title':submission.title,'Comments':c})
 
 
 
       
-        except:
+        '''except:
             return render(request,'404.html')
-
+'''
 
 def api(request):    
         text=request.GET['query']
