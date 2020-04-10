@@ -61,8 +61,8 @@ import datetime
 
 def result(request):
 
-        text=request.GET['url']
-        #try:
+    text=request.GET['url']
+    try:
         uq=text[43:45]+".txt"
         imgname=text[43:45]+".png"
         location="static/"+imgname
@@ -156,9 +156,9 @@ def result(request):
 
 
       
-        '''except:
-            return render(request,'404.html')
-'''
+    except:
+        return render(request,'404.html')
+
 
 def api(request):    
         text=request.GET['query']
