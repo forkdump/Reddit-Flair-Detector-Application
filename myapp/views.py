@@ -6,10 +6,71 @@ def warn(*args, **kwargs):
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.db.models import Q
+from django.core.files.storage import FileSystemStorage
 from .models import *
 
 
 # Create your views here.
+
+def upload(request):
+    import requests
+    if request.method == "POST":
+        uploaded_file = request.FILES['document']
+        fs=FileSystemStorage()
+        fs.save(uploaded_file.name,uploaded_file)
+        f = open("media/"+uploaded_file.name, "r")
+        #print(f.read())
+        storage=[]
+        num=0
+        '''Content=f.read()
+        CoList = Content.split("\n") 
+ 
+        for i in CoList: 
+            if i:
+                num+=1
+        print ("Size",num) '''        
+        #working
+        """for x in f:
+            response=requests.get(f"http://reddit-realtime-analysis.herokuapp.com/api?query={x}")
+            storage.append((response.text))
+            num+=1
+        print (num)
+        print (storage)   
+"""
+            
+    return render(request,'upload.html')
+
+def APIresult(request):
+        import requests
+        import json
+        #if request.method == "POST":
+        uploaded_file = request.FILES['document']
+        fs=FileSystemStorage()
+        fs.save(uploaded_file.name,uploaded_file)
+        f = open("media/"+uploaded_file.name, "r")
+        #print(f.read())
+        #storage=[]
+        storage=""
+        num=0
+        '''Content=f.read()
+        CoList = Content.split("\n") 
+ 
+        for i in CoList: 
+            if i:
+                num+=1
+        print ("Size",num) '''        
+        for x in f:
+            x=x.replace('\n','')
+            response=requests.get(f"http://reddit-realtime-analysis.herokuapp.com/api?query={x}")
+            #storage.append(json.dumps((response.text)))
+            storage+=f"{response.text}"
+
+            num+=1
+        print (num)
+        print (storage)   
+        storage="[" + f"{storage}" +"]"
+            
+        return render(request,'APIresult.html',{'storage':storage})
 
 def error_404_view(request, exception):
     return render(request,'404.html')

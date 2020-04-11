@@ -3,7 +3,9 @@ from . import views
 
 urlpatterns = [
     path('',views.index,name='index'),
+    path('APIresult',views.APIresult,name="APIresult"),
     path('getuserfeedbackform',views.getuserfeedbackform,name="getuserfeedbackform"),
+    path('upload',views.upload,name="upload"),
     path('saveuserfeedbackform',views.saveuserfeedbackform,name="saveuserfeedbackform"),
     path('dataanalysis',views.dataanalysis,name="dataanalysis"),
     path('themes',views.themes,name="themes"),
