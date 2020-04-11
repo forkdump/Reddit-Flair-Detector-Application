@@ -43,41 +43,51 @@ def upload(request):
 def APIresult(request):
         import requests
         import json
-        #if request.method == "POST":
+        import praw
+        import re        
+        import datetime
+        import joblib
         uploaded_file = request.FILES['document']
         fs=FileSystemStorage()
         fs.save(uploaded_file.name,uploaded_file)
-        f = open("media/"+uploaded_file.name, "r")
-        #print(f.read())
-        #storage=[]
-        storage=""
-        num=0
-        '''Content=f.read()
-        CoList = Content.split("\n") 
- 
-        for i in CoList: 
-            if i:
-                num+=1
-        print ("Size",num) '''
-        lis=[]        
+        f = open("media/"+uploaded_file.name, "r") 
+        dis=[]    
         for x in f:
-            x=x.replace('\n','')
-            response=requests.get(f"http://reddit-realtime-analysis.herokuapp.com/api?query={x}")
-            #storage.append(json.dumps((response.text)))
-            storage+=f"{response.text}"
-            lis.append(response.text)
+            d={}
+            x=x.replace('\n','')                    
+            nm=x  
+            reddit = praw.Reddit(client_id='WBTxS7rybznf7Q', client_secret='vJUTUflXITBsQMxeviOfG8mCZoA', user_agent='projectreddit', username='Mysterious_abhE', password='Saxena0705')
+            submission = reddit.submission(url=nm)
+            submission.comments.replace_more(limit=0)
+            tr=[]
+            c=''
+            for top_level_comment in submission.comments:        
+                c+=top_level_comment.body  
+            tr=submission.title+nm+c
+            processed_tweet = re.sub(r'\W', ' ', tr)
+            processed_tweet = re.sub(r'http\S+', ' ', processed_tweet)
+            processed_tweet=re.sub(r'www\S+', ' ', processed_tweet)
+            processed_tweet=re.sub(r'co \S+', ' ', processed_tweet)
+            processed_tweet = re.sub(r'\s+[a-zA-Z]\s+', ' ', processed_tweet)
+            processed_tweet = re.sub(r'\^[a-zA-Z]\s+', ' ', processed_tweet) 
+            processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+            processed_tweet = re.sub(r'^b\s+', ' ', processed_tweet)
+            processed_tweet = re.sub(r'\d','',processed_tweet)
+            processed_tweet = re.sub(r'\_',' ',processed_tweet)
+            processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+            tr = processed_tweet.lower()   
+            filename = 'SGD_model0.02v2cleaned.sav'
+            loaded_model = joblib.load(filename)
+            arg=loaded_model.predict(([tr]))
+            print (arg[0])
+            d.update({"key":x})
+            d.update({"value":arg[0]})
+            dis.append(d)
+        print (dis)        
+        response = JsonResponse(dis,safe=False)
+        return (response)
 
-            num+=1
-        print (lis)    
-    
-        print (num)
-        print (storage)  
-        '''if num==1: 
-            storage="[" + f"{storage}" +"]"
-        else:'''
-
-            
-        return render(request,'APIresult.html',{'storage':lis})
+        #return render(request,'APIresult.html',{'storage':response})
 
 def error_404_view(request, exception):
     return render(request,'404.html')
