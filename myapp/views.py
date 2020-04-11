@@ -58,19 +58,26 @@ def APIresult(request):
         for i in CoList: 
             if i:
                 num+=1
-        print ("Size",num) '''        
+        print ("Size",num) '''
+        lis=[]        
         for x in f:
             x=x.replace('\n','')
             response=requests.get(f"http://reddit-realtime-analysis.herokuapp.com/api?query={x}")
             #storage.append(json.dumps((response.text)))
             storage+=f"{response.text}"
+            lis.append(response.text)
 
             num+=1
+        print (lis)    
+    
         print (num)
-        print (storage)   
-        storage="[" + f"{storage}" +"]"
+        print (storage)  
+        '''if num==1: 
+            storage="[" + f"{storage}" +"]"
+        else:'''
+
             
-        return render(request,'APIresult.html',{'storage':storage})
+        return render(request,'APIresult.html',{'storage':lis})
 
 def error_404_view(request, exception):
     return render(request,'404.html')
