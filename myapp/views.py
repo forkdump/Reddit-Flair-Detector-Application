@@ -169,82 +169,88 @@ def result(request):
             c+=top_level_comment.body  
 
 
-        tr=submission.title+nm+c
-
-        processed_tweet = re.sub(r'\W', ' ', tr)
-
-
-        # Remove all the special characters
-
-        processed_tweet = re.sub(r'http\S+', ' ', processed_tweet)
-
-        #processed_tweet = re.sub(r'https?:\/\/+', ' ', processed_tweet)
-
-        #processed_tweet=re.sub(r'\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*', ' ',processed_tweet)
-
-        processed_tweet=re.sub(r'www\S+', ' ', processed_tweet)
-
-        processed_tweet=re.sub(r'co \S+', ' ', processed_tweet)
-        # remove all single characters
-        processed_tweet = re.sub(r'\s+[a-zA-Z]\s+', ' ', processed_tweet)
-
-        # Remove single characters from the start
-        processed_tweet = re.sub(r'\^[a-zA-Z]\s+', ' ', processed_tweet) 
-
-        # Substituting multiple spaces with single space
-        processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
-
-        # Removing prefixed 'b'
-        processed_tweet = re.sub(r'^b\s+', ' ', processed_tweet)
-
-        processed_tweet = re.sub(r'\d','',processed_tweet)
-        processed_tweet = re.sub(r'\_',' ',processed_tweet)
-
-        processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+        tr=submission.title+" "+nm+" "+c
+        tle=submission.title
+        actual=submission.link_flair_css_class
+    except:
+        tr=text
+        tle="Not present in Reddit"
+        c="Not present in Reddit"
+        actual="Not present in Reddit"
+    processed_tweet = re.sub(r'\W', ' ', tr)
 
 
-        # Converting to Lowercase
-        tr = processed_tweet.lower()
-        
+    # Remove all the special characters
+
+    processed_tweet = re.sub(r'http\S+', ' ', processed_tweet)
+
+    #processed_tweet = re.sub(r'https?:\/\/+', ' ', processed_tweet)
+
+    #processed_tweet=re.sub(r'\w+:\/{2}[\d\w-]+(\.[\d\w-]+)*(?:(?:\/[^\s/]*))*', ' ',processed_tweet)
+
+    processed_tweet=re.sub(r'www\S+', ' ', processed_tweet)
+
+    processed_tweet=re.sub(r'co \S+', ' ', processed_tweet)
+    # remove all single characters
+    processed_tweet = re.sub(r'\s+[a-zA-Z]\s+', ' ', processed_tweet)
+
+    # Remove single characters from the start
+    processed_tweet = re.sub(r'\^[a-zA-Z]\s+', ' ', processed_tweet) 
+
+    # Substituting multiple spaces with single space
+    processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+
+    # Removing prefixed 'b'
+    processed_tweet = re.sub(r'^b\s+', ' ', processed_tweet)
+
+    processed_tweet = re.sub(r'\d','',processed_tweet)
+    processed_tweet = re.sub(r'\_',' ',processed_tweet)
+
+    processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
+
+
+    # Converting to Lowercase
+    tr = processed_tweet.lower()
     
 
-        import datetime
-        import joblib
 
-        filename = 'SGD_model0.02v2cleaned.sav'
+    import datetime
+    import joblib
 
-        loaded_model = joblib.load(filename)
+    filename = 'SGD_model0.02v2cleaned.sav'
 
-        arg=loaded_model.predict(([tr]))
-        print (arg[0])
-        
+    loaded_model = joblib.load(filename)
 
-        link=text
-        flair=arg[0]
-        obj = Url()
-        obj.result = arg[0]
-        obj.link = text
-        obj.flair = arg[0]
-        obj.title=submission.title
-        tags = [result,link,flair]
-        tags = list(filter(lambda x: x!="Not Found",tags))
-        tags.append(text)
-        obj.save()
+    arg=loaded_model.predict(([tr]))
+    print (arg[0])
+    
 
-        import csv
-        with open ('static/dataset.csv','a') as res:        
-            writer=csv.writer(res)           
-            s="{},{},{},{}\n".format(re.sub(r'\W', '', text),re.sub(r'\W', '', submission.title),arg[0],str(datetime.datetime.now()))
-            res.write(s)     
+    link=text
+    flair=arg[0]
+    obj = Url()
+    obj.result = arg[0]
+    obj.link = text
+    obj.flair = arg[0]
+    obj.title=tle
+    tags = [result,link,flair]
+    tags = list(filter(lambda x: x!="Not Found",tags))
+    tags.append(text)
+    obj.save()
+
+    import csv
+    with open ('static/dataset.csv','a') as res:        
+        writer=csv.writer(res)           
+        s="{},{},{},{}\n".format(re.sub(r'\W', '', text),re.sub(r'\W', '', tle),arg[0],str(datetime.datetime.now()))
+        res.write(s)     
 
             
-        return render(request,'result.html',{'result':'Real-time analysis successfull','f2':text,'mal': arg[0],'title':submission.title,'Comments':c})
+    return render(request,'result.html',{'result':'Real-time analysis successfull','f2':text,'mal': arg[0],'actual':actual,'title':tle,'Comments':c})
 
 
 
-      
+    '''  
     except:
-        return render(request,'404.html')
+        return render(request,'404.html')'''
 
 
 def api(request):    
