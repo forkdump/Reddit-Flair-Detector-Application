@@ -172,6 +172,7 @@ def result(request):
         tr=submission.title+" "+nm+" "+c
         tle=submission.title
         actual=submission.link_flair_css_class
+        
     except:
         tr=text
         tle="Not present in Reddit"
@@ -212,13 +213,21 @@ def result(request):
     # Converting to Lowercase
     tr = processed_tweet.lower()
     
+    import csv
+    if actual is not "Not present in Reddit":
+        with open ('static/trainable.csv','a',encoding="utf-8") as res:        
+            writer=csv.writer(res)      
+            s="{},{}\n".format(re.sub(r'\W', ' ', (tr)),re.sub(r'\W', '', str(actual)))
+            res.write(s)    
+            print ("Successfull data saved") 
+
 
 
     import datetime
     import joblib
 
-    filename = 'SGD_model0.02v2cleaned.sav'
-
+    #filename = 'SGD_model0.02v2cleaned.sav'
+    filename ='SGD_model1002moddata.sav'
     loaded_model = joblib.load(filename)
 
     arg=loaded_model.predict(([tr]))
@@ -240,7 +249,7 @@ def result(request):
     import csv
     with open ('static/dataset.csv','a') as res:        
         writer=csv.writer(res)           
-        s="{},{},{},{}\n".format(re.sub(r'\W', '', text),re.sub(r'\W', '', tle),arg[0],str(datetime.datetime.now()))
+        s="{},{},{},{}\n".format(re.sub(r'\W', '', text),re.sub(r'\W', ' ', tle),arg[0],str(datetime.datetime.now()))
         res.write(s)     
 
             
