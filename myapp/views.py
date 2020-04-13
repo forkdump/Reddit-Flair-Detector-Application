@@ -79,7 +79,7 @@ def APIresult(request):
                 processed_tweet = re.sub(r'\_',' ',processed_tweet)
                 processed_tweet= re.sub(r'\s+', ' ', processed_tweet, flags=re.I)
                 tr = processed_tweet.lower()   
-                filename = 'SGD_model0.02v2cleaned.sav'
+                filename = 'SGD_model1002moddata.sav'
                 loaded_model = joblib.load(filename)
                 arg=loaded_model.predict(([tr]))
                 print (arg[0])
@@ -283,7 +283,7 @@ def api(request):
             import datetime
             import joblib
 
-            filename = 'SGD_model0.02v2cleaned.sav'
+            filename = 'SGD_model1002moddata.sav'
 
             loaded_model = joblib.load(filename)
 
