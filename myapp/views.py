@@ -213,13 +213,13 @@ def result(request):
     # Converting to Lowercase
     tr = processed_tweet.lower()
     
-    import csv
+    '''import csv
     if actual is not "Not present in Reddit":
         with open ('static/trainable.csv','a',encoding="utf-8") as res:        
             writer=csv.writer(res)      
             s="{},{}\n".format(re.sub(r'\W', ' ', (tr)),re.sub(r'\W', '', str(actual)))
             res.write(s)    
-            print ("Successfull data saved") 
+            print ("Successfull data saved")''' 
 
 
 
