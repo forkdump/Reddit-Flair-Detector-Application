@@ -1,4 +1,4 @@
-# Reddit-Flair-Detector-Application ![How to install](/static/46.png) 
+# Reddit-Flair-Detector-Application <a href="url"><img src="static/46.png" align="left" height="48" width="48" ></a>
 
 Reddit-Flair-Detector-Application
 
