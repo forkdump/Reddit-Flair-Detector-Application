@@ -12,7 +12,7 @@ from .models import *
 
 # Create your views here.
 
-def upload(request):
+def automated_testing(request):
     import requests
 
     if request.method == "POST":
