@@ -4,6 +4,8 @@ Reddit-Flair-Detector-Application
 
 **Web-Application** is live at https://reddit-realtime-analysis.herokuapp.com/
 
+**Automated Testing** URL at https://reddit-realtime-analysis.herokuapp.com/automated_testing
+
 ## Installation Guide
 
 1.  Extract Reddit-Flair-Detector-Application zip file.
