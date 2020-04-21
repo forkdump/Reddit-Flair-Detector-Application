@@ -1,4 +1,4 @@
-# Reddit-Flair-Detector-Application <a href="url"><img src="static/46.png" align="left" height="48" width="48" ></a>
+# Reddit-Flair-Detector-Application <a href="https://reddit-realtime-analysis.herokuapp.com/"><img src="static/46.png" align="left" height="50" width="50" ></a>
 
 Reddit-Flair-Detector-Application
 
