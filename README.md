@@ -2,7 +2,11 @@
 
 Reddit-Flair-Detector-Application
 
-Web-Application is live at https://reddit-realtime-analysis.herokuapp.com/
+1. **Web-Application** is live at https://reddit-realtime-analysis.herokuapp.com/
+
+2. **Automated Testing** URL at https://reddit-realtime-analysis.herokuapp.com/automated_testing
+
+3. **Jupyter Notebook** at https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/tree/master/Jupyter%20Notebooks
 
 ## Installation Guide
 
@@ -46,6 +50,12 @@ Web-Application is live at https://reddit-realtime-analysis.herokuapp.com/
     
     ![How to install](/Images/9.png)
     
-    
+## Approach Followed
+
+1.  Fetch data from r/india subreddit.
+2.  Clean the data for bogus symbols like ",!()?", combine features, remove stopwords using Spacy.
+3.  Train using combined features through SGDClassifier.
+4.  Save the classifier for using it in the Web-Application.
+5.  Predict the flair, through subreddit URL.
 
     
