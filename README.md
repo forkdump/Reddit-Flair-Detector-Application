@@ -2,9 +2,11 @@
 
 Reddit-Flair-Detector-Application
 
-**Web-Application** is live at https://reddit-realtime-analysis.herokuapp.com/
+1. **Web-Application** is live at https://reddit-realtime-analysis.herokuapp.com/
 
-**Automated Testing** URL at https://reddit-realtime-analysis.herokuapp.com/automated_testing
+2. **Automated Testing** URL at https://reddit-realtime-analysis.herokuapp.com/automated_testing
+
+3. **Jupyter Notebook** at https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/tree/master/Jupyter%20Notebooks
 
 ## Installation Guide
 
