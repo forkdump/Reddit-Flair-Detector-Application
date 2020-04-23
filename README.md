@@ -12,7 +12,7 @@ Reddit-Flair-Detector-Application
 
 1. Preprocessed Text=Text with bogus symbols " ! ? / , @ : " removed.
 2. Combined Text = Preprocessed Text of URL + Title + Comments.
-3. Cleaned Text = Preprocessed text with STOPWORDS like " the,I,was,were " removed using "en_core_web_sm" module of Spacy Library.
+3. Cleaned Text = Preprocessed text with STOPWORDS like " the,I,was,were " removed using "en_core_web_sm" module of [Spacy Library](https://spacy.io/).
 
 ## Classifiers used :
 
@@ -57,21 +57,21 @@ RandomForest | 0.75 | 0.71 | 0.44 | 0.63
 
 1.  Type URL in text bar and click on GET REALTIME ANALYSIS.
 
-    ![How to install](/Images/5.png)
+    ![Usage](/Images/5.png)
     
 2.  Link for automated testing is: https://reddit-realtime-analysis.herokuapp.com/automated_testing
 
 3.  Upload a text file which contains a link of a r/india post in every line and click on GET PREDICTIONS.
 
-    ![How to install](/Images/6.png)
+    ![Usage](/Images/6.png)
     
-    ![How to install](/Images/7.png)
+    ![Usage](/Images/7.png)
 
 4.  The result is a JSON file as depicted here.
 
-    ![How to install](/Images/8.png)
+    ![Usage](/Images/8.png)
     
-    ![How to install](/Images/9.png)    
+    ![Usage](/Images/9.png)    
 ## Approach Followed
 
 1.  Fetch data from r/india subreddit.
