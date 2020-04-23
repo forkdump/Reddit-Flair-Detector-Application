@@ -75,7 +75,7 @@ RandomForest | 0.75 | 0.71 | 0.44 | 0.63
 ## Approach Followed
 
 1.  Fetch data from r/india subreddit.
-2.  Clean the data for bogus symbols like ",!()?", combine features, remove stopwords using Spacy.
+2.  Clean the data for bogus symbols like " , ! ( ) ? " combine features, remove stopwords using Spacy.
 3.  Train using combined features through SGDClassifier.
 4.  Save the classifier for using it in the Web-Application.
 5.  Predict the flair, through subreddit URL.
