@@ -22,7 +22,6 @@ SVM, MLP, MultinomialNB, SGDClassifier, Logistic Regression, RandomForest
 
 Classifier | Cleaned Text | Combined Features | Processed URL | Processed Title
 ------------ | ------------- | ------------ | ------------- | ------------- 
-
 SVM | 0.79 | 0.72 | 0.47 | 0.65
 MLP |0.61	| 0.61 | 0.42 | 0.54
 MultinomialNB | 0.61 | 0.57 | 0.40 | 0.58
