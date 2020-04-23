@@ -82,14 +82,14 @@ RandomForest | 0.75 | 0.71 | 0.44 | 0.63
 
 ## About Application
 
-1. Data Analysis section at 
+1. Data Analysis section at : https://reddit-realtime-analysis.herokuapp.com/dataanalysis
 
     ![Usage](/Images/dataanalysis.png)
 
-2. Data that is searched through this application is stored in a database 
+2. Data that is searched through this application is stored in a database : https://reddit-realtime-analysis.herokuapp.com/geturlhistory
 
     ![Usage](/Images/database.png)
     
-3. Themes discussed in each flair are depicted at
+3. Themes discussed in each flair are depicted at : https://reddit-realtime-analysis.herokuapp.com/themes
 
     ![Usage](/Images/themes.png)
