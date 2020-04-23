@@ -8,6 +8,19 @@ Reddit-Flair-Detector-Application
 
 3. **Jupyter Notebook** at https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/tree/master/Jupyter%20Notebooks
 
+## Terms used in collected Dataset
+
+1. Preprocessed Text=Text with bogus symbols " ! ? / , @ :" removed.
+2. Combined Text=Preprocessed Text of URL+Title+Comments.
+3. Cleaned Text=Preprocessed text with STOPWORDS like "the,I,was,were" removed using "en_core_web_sm" module of Spacy Library.
+
+## Classifiers used :
+
+SVM, MLP, MultinomialNB, SGDClassifier, Logistic Regression, RandomForest
+
+## Accuracy of various Classifiers :
+
+
 ## Installation Guide
 
 1.  Extract Reddit-Flair-Detector-Application zip file.
