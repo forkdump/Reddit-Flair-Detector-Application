@@ -20,6 +20,10 @@ SVM, MLP, MultinomialNB, SGDClassifier, Logistic Regression, RandomForest
 
 ## Accuracy of various Classifiers :
 
+Classifier | Accuracy for each Feature
+Classifier | Accuracy for each Feature | Classifier | Accuracy for each Feature
+------------ | ------------- | ------------ | ------------- |
+
 
 ## Installation Guide
 
