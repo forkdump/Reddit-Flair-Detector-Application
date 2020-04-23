@@ -10,9 +10,9 @@ Reddit-Flair-Detector-Application
 
 ## Terms used in collected Dataset
 
-1. Preprocessed Text=Text with bogus symbols " ! ? / , @ :" removed.
-2. Combined Text=Preprocessed Text of URL+Title+Comments.
-3. Cleaned Text=Preprocessed text with STOPWORDS like "the,I,was,were" removed using "en_core_web_sm" module of Spacy Library.
+1. Preprocessed Text=Text with bogus symbols " ! ? / , @ : " removed.
+2. Combined Text = Preprocessed Text of URL + Title + Comments.
+3. Cleaned Text = Preprocessed text with STOPWORDS like " the,I,was,were " removed using "en_core_web_sm" module of Spacy Library.
 
 ## Classifiers used :
 
