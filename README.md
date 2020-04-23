@@ -48,8 +48,7 @@ Reddit-Flair-Detector-Application
 
     ![How to install](/Images/8.png)
     
-    ![How to install](/Images/9.png)
-    
+    ![How to install](/Images/9.png)    
 ## Approach Followed
 
 1.  Fetch data from r/india subreddit.
