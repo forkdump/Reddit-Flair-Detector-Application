@@ -33,7 +33,7 @@ print (r.text)
 
 1. Part I   - Reddit Data Collection (https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/blob/master/Jupyter%20Notebooks/Part%20I%20-%20Reddit%20Data%20Collection.ipynb) : 
    Using PRAW a total of 2552 posts are collected from 11 flairs listed as AskIndia, Business/Finance, Coronavirus, Food, Non-Political Photography, Policy/Economy, Politics, Scheduled, Science/Technology, Sports.
-         ![How to install](/Images/donut.png)  
+               ![How to install](/Images/donut.png)  
 
 2. Part II  - Exploratory Data Analysis (EDA) (https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/blob/master/Jupyter%20Notebooks/Part%20II%20-%20Exploratory%20Data%20Analysis%20(EDA).ipynb) : On Cleaned and Processed Data Temporal and EDA is performed 
 
