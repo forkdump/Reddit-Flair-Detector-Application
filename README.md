@@ -40,7 +40,9 @@ Percentage of each flair in dataset is shown in donut below :
    
 
 2. **Part II  - Exploratory Data Analysis (EDA)** (https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/blob/master/Jupyter%20Notebooks/Part%20II%20-%20Exploratory%20Data%20Analysis%20(EDA).ipynb) : 
-On Cleaned and Processed Data Temporal and EDA is performed 
+On Cleaned and Processed Data Temporal and EDA is performed. 
+
+**Link to Data Analysis in Web-Application is** : https://reddit-realtime-analysis.herokuapp.com/dataanalysis
 
 3. **Part III - Building a Flare Detector** (https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/blob/master/Jupyter%20Notebooks/Part%20III%20-%20Building%20a%20Flair%20Detector.ipynb) : 
 Using various classifiers as listed below a flair classifier is built and SGDClassifier is used in Web-Application. This works quite well in classifying real world posts.
