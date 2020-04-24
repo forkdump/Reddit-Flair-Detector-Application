@@ -47,6 +47,9 @@ On Cleaned and Processed Data Temporal and EDA is performed.
 3. **Part III - Building a Flare Detector** (https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/blob/master/Jupyter%20Notebooks/Part%20III%20-%20Building%20a%20Flair%20Detector.ipynb) : 
 Using various classifiers as listed below a flair classifier is built and **SGDClassifier** is used in Web-Application. **This works quite well in classifying real world posts.**
 
+Accuracy of SGDClassifier is shown below:
+![Distribution of different flairs](/static/accsgd.png)  
+
 4. **Part IV  - Building a Web Application** : 
 A Web-Application is built to predict flair of a r/india post. Application has an input field which prompts a link to a reddit post from r/india. On submission it predicts the flair of the post.
 
