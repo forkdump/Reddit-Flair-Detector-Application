@@ -12,12 +12,14 @@ Reddit-Flair-Detector-Application
 
 **Automated Testing** URL at https://reddit-realtime-analysis.herokuapp.com/automated_testing
 
-Python Code for automated_testing : 
+**Python Code for automated_testing :** 
 
+```
 import requests
 
 r = requests.post("https://reddit-realtime-analysis.herokuapp.com/automated_testing", files = {'upload_file': open('s.txt', 'rb')})
 print (r.text)    
+```
 
 ## Terms used in collected Dataset
 
