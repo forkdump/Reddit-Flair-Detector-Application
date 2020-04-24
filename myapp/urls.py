@@ -5,6 +5,7 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('APIresult',views.APIresult,name="APIresult"),
     path('getuserfeedbackform',views.getuserfeedbackform,name="getuserfeedbackform"),
+    path('upload',views.upload,name="upload"),
     path('automated_testing',views.automated_testing,name="automated_testing"),
     path('saveuserfeedbackform',views.saveuserfeedbackform,name="saveuserfeedbackform"),
     path('dataanalysis',views.dataanalysis,name="dataanalysis"),
