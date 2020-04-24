@@ -48,7 +48,8 @@ On Cleaned and Processed Data Temporal and EDA is performed.
 Using various classifiers as listed below a flair classifier is built and **SGDClassifier** is used in Web-Application. **This works quite well in classifying real world posts.**
 
 Accuracy of SGDClassifier is shown below:
-![Distribution of different flairs](/static/accsgd.png)  
+
+ ![Distribution of different flairs](/static/accsgd.png)  
 
 4. **Part IV  - Building a Web Application** : 
 A Web-Application is built to predict flair of a r/india post. Application has an input field which prompts a link to a reddit post from r/india. On submission it predicts the flair of the post.
