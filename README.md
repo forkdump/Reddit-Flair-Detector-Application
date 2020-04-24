@@ -32,7 +32,7 @@ print (r.text)
 ## Steps Followed : 
 
 1. Part I   - Reddit Data Collection
-1.1 Using PRAW a total of 2552 posts are collected from 11 flairs listed as AskIndia, Business/Finance, Coronavirus, Food, Non-Political Photography, Policy/Economy, Politics, Scheduled, Science/Technology, Sports.
+   Using PRAW a total of 2552 posts are collected from 11 flairs listed as AskIndia, Business/Finance, Coronavirus, Food, Non-Political Photography, Policy/Economy, Politics, Scheduled, Science/Technology, Sports.
 
 2. Part II  - Exploratory Data Analysis (EDA)
 3. Part III - Building a Flare Detector
