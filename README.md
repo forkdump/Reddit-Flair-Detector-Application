@@ -21,6 +21,8 @@ r = requests.post("https://reddit-realtime-analysis.herokuapp.com/automated_test
 print (r.text)    
 ```
 
+![automated testing](/static/test.png)  
+
 ## Terms used in collected Dataset
 
 1. Preprocessed Text=Text with bogus symbols " ! ? / , @ : " removed.
