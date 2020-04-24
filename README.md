@@ -31,13 +31,22 @@ print (r.text)
 
 ## Steps Followed : 
 
-1. Part I   - Reddit Data Collection
+1. Part I   - Reddit Data Collection (https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/blob/master/Jupyter%20Notebooks/Part%20I%20-%20Reddit%20Data%20Collection.ipynb) : 
    Using PRAW a total of 2552 posts are collected from 11 flairs listed as AskIndia, Business/Finance, Coronavirus, Food, Non-Political Photography, Policy/Economy, Politics, Scheduled, Science/Technology, Sports.
 
-2. Part II  - Exploratory Data Analysis (EDA)
-3. Part III - Building a Flare Detector
-4. Part IV  - Building a Web Application
-5. Part V   - Deployment
+2. Part II  - Exploratory Data Analysis (EDA) (https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/blob/master/Jupyter%20Notebooks/Part%20II%20-%20Exploratory%20Data%20Analysis%20(EDA).ipynb) : On Cleaned and Processed Data Temporal and EDA is performed 
+
+3. Part III - Building a Flare Detector (https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/blob/master/Jupyter%20Notebooks/Part%20III%20-%20Building%20a%20Flair%20Detector.ipynb) : Using various classifiers as listed below a flair classifier is built and SGDClassifier is used in Web-Application. This works quite well in classifying real world posts.
+
+4. Part IV  - Building a Web Application : A Web-Application is built to predict flair of a r/india post. Application has an input field which prompts a link to a reddit post from r/india. On submission it predicts the flair of the post.
+
+Web application should also has an endpoint called /automated_testing. This endpoint will
+be used for testing performance of the classifier. We will send an automated POST request to
+the end point with a .txt file which contains a link of a r/india post in every line. Response of the
+request should be a json file in which key is the link to the post and value should be predicted
+flair.
+
+5. Part V   - Deployment : The Django application is deployed on heroku at https://reddit-realtime-analysis.herokuapp.com/
 
 
 ## Classifiers used :
