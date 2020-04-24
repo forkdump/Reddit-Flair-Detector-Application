@@ -56,7 +56,7 @@ def automated_testing(request):
                 filename = 'SGD_model1002moddata.sav'
                 loaded_model = joblib.load(filename)
                 arg=loaded_model.predict(([tr]))
-                print (arg[0])
+                #print (arg[0])
                 d.update({"key":x})
                 d.update({"value":arg[0]})
                 dis.append(d)
@@ -66,7 +66,7 @@ def automated_testing(request):
                 dis.append(d)
                     
 
-        print (dis)        
+        #print (dis)        
         response = JsonResponse(dis,safe=False)
         return (response)
 
