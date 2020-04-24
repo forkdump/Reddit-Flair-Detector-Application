@@ -8,6 +8,21 @@ Reddit-Flair-Detector-Application
 
 3. **Jupyter Notebook** at https://github.com/abhisheksaxena1998/Reddit-Flair-Detector-Application/tree/master/Jupyter%20Notebooks
 
+## To use automated_testing
+
+**Automated Testing** URL at https://reddit-realtime-analysis.herokuapp.com/automated_testing
+
+**Python Code for automated_testing :** 
+
+```
+import requests
+
+r = requests.post("https://reddit-realtime-analysis.herokuapp.com/automated_testing", files = {'upload_file': open('s.txt', 'rb')})
+print (r.text)    
+```
+
+![automated testing](/static/test.png)  
+
 ## Terms used in collected Dataset
 
 1. Preprocessed Text=Text with bogus symbols " ! ? / , @ : " removed.
