@@ -29,6 +29,15 @@ print (r.text)
 2. Combined Text = Preprocessed Text of URL + Title + Comments.
 3. Cleaned Text = Preprocessed text with STOPWORDS like " the,I,was,were " removed using "en_core_web_sm" module of [Spacy Library](https://spacy.io/).
 
+## Steps Followed : 
+
+1. Part I   - Reddit Data Collection
+2. Part II  - Exploratory Data Analysis (EDA)
+3. Part III - Building a Flare Detector
+4. Part IV  - Building a Web Application
+5. Part V   - Deployment
+
+
 ## Classifiers used :
 
 SVM, MLP, MultinomialNB, SGDClassifier, Logistic Regression, RandomForest
