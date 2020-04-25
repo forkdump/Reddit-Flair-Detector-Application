@@ -53,7 +53,7 @@ Using various classifiers as listed below a flair classifier is built and **SGDC
 4. **Part IV  - Building a Web Application** : 
 A Web-Application is built to predict flair of a r/india post. Application has an input field which prompts a link to a reddit post from r/india. On submission it predicts the flair of the post.
 
-Web application should also has an endpoint called /automated_testing. This endpoint will
+   Web application should also has an endpoint called /automated_testing. This endpoint will
 be used for testing performance of the classifier. We will send an automated POST request to
 the end point with a .txt file which contains a link of a r/india post in every line. Response of the
 request should be a json file in which key is the link to the post and value should be predicted
