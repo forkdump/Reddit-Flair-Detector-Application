@@ -23,7 +23,7 @@ r = requests.post("https://reddit-realtime-analysis.herokuapp.com/automated_test
 print (r.text)   
 ```
 
-![automated testing](/static/test.png)  
+![automated testing](/Images/test.png)  
 
 ## Terms used in collected Dataset
 
