@@ -14,11 +14,12 @@ Reddit-Flair-Detector-Application
 
 **Python Code for automated_testing :** 
 
-```
-import requests
+```import requests
 
-r = requests.post("https://reddit-realtime-analysis.herokuapp.com/automated_testing", files = {'upload_file': open('s.txt', 'rb')})
-print (r.text)    
+files = {'upload_file': open('0987908uiy78.txt','rb')}
+r = requests.post("https://reddit-realtime-analysis.herokuapp.com/automated_testing", files=files)
+
+print (r.text)   
 ```
 
 ![automated testing](/static/test.png)  
